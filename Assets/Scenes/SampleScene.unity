@@ -776,8 +776,8 @@ MonoBehaviour:
     rightWheel: {fileID: 758899916}
     hasMotor: 1
     canSteering: 0
-  maxForwardMotorTorque: 591
-  maxBackwardMotorTorque: 77
+  maxForwardMotorTorque: 600
+  maxBackwardMotorTorque: 200
   maxSteeringAngle: 45
   breakForce: 100000
 --- !u!4 &1644064924232484380

@@ -9,8 +9,8 @@ public class CarController : MonoBehaviour
 
     [Header("Core Specs")]
     [SerializeField] [Range(10f, 1000f)] private float maxForwardMotorTorque;
-    [SerializeField] [Range(10f, 250f)] private float maxBackwardMotorTorque;
-    [SerializeField] [Range(10f, 360f)] [Tooltip("20~60")] private float maxSteeringAngle;
+    [SerializeField] [Range(10f, 250f)] private float maxReverseMotorTorque;
+    [SerializeField] [Range(20f, 60f)] private float maxSteeringAngle;
 
     [SerializeField] [Tooltip("Must be bigger than maxMotorTorque")] private float breakForce;
 
@@ -51,8 +51,16 @@ public class CarController : MonoBehaviour
         axle.leftWheel.brakeTorque = 0;
         axle.rightWheel.brakeTorque = 0;
 
-        axle.leftWheel.motorTorque = maxForwardMotorTorque * motor;
-        axle.rightWheel.motorTorque = maxForwardMotorTorque * motor;
+        if(motor>0)
+        {
+            axle.leftWheel.motorTorque = maxForwardMotorTorque * motor;
+            axle.rightWheel.motorTorque = maxForwardMotorTorque * motor;
+        }
+        else
+        {
+            axle.leftWheel.motorTorque = maxReverseMotorTorque * motor;
+            axle.rightWheel.motorTorque = maxReverseMotorTorque * motor;
+        }
     }
 
     private void Break(AxleInfo axle)
